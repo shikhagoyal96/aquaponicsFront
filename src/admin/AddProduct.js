@@ -86,7 +86,7 @@ const AddProduct = () => {
 
             <div className="form-group">
                 <label className="text-muted">Weight</label>
-                <input onChange={handleChange('weight')} type="text" className="form-control" value={weight} />
+                <input onChange={handleChange('weight')} type="number" className="form-control" value={weight} />
             </div>
 
             <button className="btn btn-outline-primary">Create Product</button>

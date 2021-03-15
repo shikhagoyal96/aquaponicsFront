@@ -1,44 +1,23 @@
-import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
-//import moment from 'moment';
-//import { addItem, updateItem, removeItem } from './cartHelpers';
+import moment from 'moment';
+import { addItem, updateItem, removeItem } from './cartHelpers';
 
-const Card = ({product}) => {
-    return(
-        <div className="col-4 mb-3">
-            <div className="card">
-                <div className="card-header">{product.name}</div>
-                <div className="card-body">
-                    <ShowImage item={product} url="product" />
-                    <p>{product.title}</p>
-                    <p>{product.price}</p>
-                    <p>{product.weight}</p>
-                    <Link to="/">
-                        <button className="btn btn-outline-primary mt-2 mb-2">
-                            View Product
-                        </button>
-                    </Link>
-                    <button className="btn btn-outline-warning mt-2 mb-2">
-                            Add to cart
-                        </button>
-                </div>
-            </div>
-        </div>
-    );
-};
-// const Card = ({
-//   product,
-//   showViewProductButton = true,
-//   showAddToCartButton = true,
-//   cartUpdate = false,
-//   showRemoveProductButton = false,
+const Card = ({
+  product,
+  //showViewProductButton = true,
+  showAddToCartButton = true,
+  cartUpdate = false,
+  showRemoveProductButton = false,
 //   setRun = f => f,
 //   run = undefined
-//   // changeCartSize
-// }) => {
-//   const [redirect, setRedirect] = useState(false);
-//   const [count, setCount] = useState(product.count);
+  // changeCartSize
+}) => {
+  const [redirect, setRedirect] = useState(false);
+  const [count, setCount] = useState(product.count);
 
 //   const showViewButton = showViewProductButton => {
 //     return (
@@ -49,63 +28,87 @@ const Card = ({product}) => {
 //       )
 //     );
 //   };
-//   const addToCart = () => {
-//     // console.log('added');
-//     addItem(product, setRedirect(true));
-//   };
+  const addToCart = () => {
+    // console.log('added');
+    addItem(product, 
+        () => {
+        setRedirect(true)
+    });
+  };
 
-//   const shouldRedirect = redirect => {
-//     if (redirect) {
-//       return <Redirect to="/cart" />;
-//     }
-//   };
+  const shouldRedirect = redirect => {
+    if (redirect) {
+      return <Redirect to="/cart" />;
+    }
+  };
 
-//   const showAddToCartBtn = showAddToCartButton => {
-//     return (
-//       showAddToCartButton && (
-//         <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2 card-btn-1  ">
-//           Add to cart
-//         </button>
-//       )
-//     );
-//   };
+  const showAddToCart = (showAddToCartButton) => {
+    return (
+       showAddToCartButton && (
+        <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2 card-btn-1  ">
+          Add to cart
+        </button>
+      )
+    );
+  };
 
-//   const showRemoveButton = showRemoveProductButton => {
-//     return (
-//       showRemoveProductButton && (
-//         <button
-//           onClick={() => {
-//             removeItem(product._id);
-//             setRun(!run); // run useEffect in parent Cart
-//           }}
-//           className="btn btn-outline-danger mt-2 mb-2"
-//         >
-//           Remove Product
-//         </button>
-//       )
-//     );
-//   };
-//   return (
-//     <div className="card ">
-//       <div className="card-header card-header-1 ">{product.name}</div>
-//       <div className="card-body">
-//         {shouldRedirect(redirect)}
-//         <ShowImage item={product} url="product" />
-//         <p className="card-p  mt-2">{product.description.substring(0, 100)} </p>
-//         <p className="card-p black-10">$ {product.price}</p>
-//         <p className="black-9">Category: {product.category && product.category.name}</p>
-//         <p className="black-8">Added on {moment(product.createdAt).fromNow()}</p>
+  const handleChange = productId => event => {
+    setCount(event.target.value < 1 ? 1 : event.target.value);
+    if(event.target.value >= 1){
+        updateItem(productId, event.target.value)
+    }  
+  };
 
-//         <br />
+  const showCartUpdateOptions = cartUpdate => {
+      return cartUpdate && <div>
+          <div className="input-group mb-3">
+            <div className="input-group prepend">
+                <span className="input-group-text">AdjustQuantity</span>
+            </div>
+            <input type="number" className="form-control" value={count}
+                onChange={handleChange(product._id)}/>
+            </div>
+      </div>
+  }
 
-//         {showViewButton(showViewProductButton)}
+  const showRemoveButton = showRemoveProductButton => {
+    return (
+      showRemoveProductButton && (
+        <button
+          onClick={() => 
+            removeItem(product._id)
+            //setRun(!run); // run useEffect in parent Cart
+          }
+          className="btn btn-outline-danger mt-2 mb-2"
+        >
+          Remove Product
+        </button>
+      )
+    );
+  };
 
-//         {showAddToCartBtn(showAddToCartButton)}
+  return (
+    <div className="card ">
+      <div className="card-header card-header-1 ">{product.name}</div>
+      <div className="card-body">
+        {shouldRedirect(redirect)}
+        <ShowImage item={product} url="product" />
+        <p className="card-p black-10">$ {product.price}</p>
+        <p className="card-p black-10">{product.weight}</p>
+        {/* <p className="black-8">Added on {moment(product.createdAt).fromNow()}</p> */}
 
-//         {showRemoveButton(showRemoveProductButton)}
-//       </div>
-//     </div>
-//   );
-// };
+  <br />
+
+        {/* {showViewButton(showViewProductButton)} */}
+
+        {showAddToCart(showAddToCartButton)}
+
+        {showCartUpdateOptions(cartUpdate)}
+
+        {showRemoveButton(showRemoveProductButton)} 
+      </div> 
+    </div>
+  );
+};
 
 export default Card;
