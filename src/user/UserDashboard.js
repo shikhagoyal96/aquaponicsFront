@@ -58,9 +58,9 @@ const Dashboard = () => {
 
 
     return (
-        <div className="container">
+        <div className="container"><br/>
             <h1>Hello {name}</h1>
-            <div className="row">
+            <div className="row" style={{margin: "5% 0% 8% 0%"}}> 
                  <div className="col-3">{userLinks()}</div>
                  <div className="col-9">
                      {userInfo()}

@@ -93,8 +93,8 @@ const Card = ({
       <div className="card-body">
         {shouldRedirect(redirect)}
         <ShowImage item={product} url="product" />
-        <p className="card-p black-10">$ {product.price}</p>
-        <p className="card-p black-10">{product.weight}</p>
+        <p className="card-p black-10">Price: $ {product.price}</p>
+        <p className="card-p black-10">Weight: {product.weight} lb</p>
         {/* <p className="black-8">Added on {moment(product.createdAt).fromNow()}</p> */}
 
   <br />

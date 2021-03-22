@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 //import Layout from './Layout';
 import { getCart, removeItem } from './cartHelpers';
 import Card from './Card';
-//import Checkout from './Checkout';
+import Checkout from './Checkout';
 
 const Cart = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        setItems(getCart())
-    }, [items])
+        setItems(getCart());
+        //setItems(currentItems => getCart(currentItems));
+    }, [items]);
 
     const showItems = items => {
         return (
@@ -40,12 +41,14 @@ const Cart = () => {
 
     return(
         <div className="container-fluid">
-            <div className="row">
-                <div className="col-6">
-                    {items.lenght > 0 ? showItems(items) : noItemsMessage()}
+            <div className="row" style={{margin: "auto", width: "60%"}}>
+                <div className="col-6 mb-3">
+                    {items.length > 0 ? showItems(items) : noItemsMessage()}
                 </div>
                 <div className="col-6">
-                    <h2>gsvah</h2>
+                    <h2 className="mb-4">Your Cart summary</h2>
+                    <hr/>
+                    <Checkout products={items}/>
                 </div>
             </div>
         </div>

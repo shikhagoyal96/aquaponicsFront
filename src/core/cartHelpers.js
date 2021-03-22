@@ -20,7 +20,7 @@ export const addItem = (
         // ...with the array of ids we got on when first map() was used
         // run map() on it again and return the actual product from the cart
 
-        cart = Array.from(new Set(cart.map(p => p._id))).map(id => {
+        cart = Array.from(new Set(cart.map((p) => (p._id)))).map(id => {
             return cart.find(p => p._id === id);
         });
 
@@ -64,7 +64,7 @@ export const updateItem = (productId, count) => {
     }
 };
 
-export const removeItem = productId => {
+export const removeItem = (productId ) => {
     let cart = [];
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {

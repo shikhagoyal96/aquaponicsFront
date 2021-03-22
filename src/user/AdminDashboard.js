@@ -49,9 +49,9 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="container">
-            <h1>Hello Admin{name}</h1>
-            <div className="row">
+        <div className="container"><br/>
+            <h1>Hello {name}..!!</h1>
+            <div className="row" style={{margin: "5% 0% 20% 0%"}}>
                 <div className="col-3">{adminLinks()}</div>
                 <div className="col-9">{adminInfo()}</div>
             </div> 

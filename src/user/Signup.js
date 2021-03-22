@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Layout from '../core/Layout';
 import {Link} from 'react-router-dom';
 import {signup} from '../auth';
 
@@ -38,6 +39,7 @@ const Signup = () => {
 
     const signUpForm = () => (
         <form>
+            <div style={{margin: "5% 0%"}}>
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input onChange={handleChange('name')} type="text" className="form-control" value={name} />
@@ -55,6 +57,7 @@ const Signup = () => {
             <button onClick={clickSubmit} className="btn btn-primary">
                 Submit
             </button>
+            </div>
         </form>
     );
 
@@ -71,17 +74,15 @@ const Signup = () => {
     );
 
     return (
-        // <Layout
-        //     title="Signup"
-        //     description="Signup to Node React E-commerce App"
-        //     className="container col-md-8 offset-md-2"
-        // >
-        <div className="container col-md-8 offset-md-2">
+        <Layout
+            title="Signup"
+            description="Fill all the input fields to create your account...."
+            className="container col-md-8 offset-md-2"
+        >
             {showSuccess()}
             {showError()}
             {signUpForm()}
-        </div>
-        // </Layout>
+        </Layout>
     );
 }
 
