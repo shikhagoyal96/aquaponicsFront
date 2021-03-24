@@ -36,6 +36,8 @@ import AdminDashboard from './user/AdminDashboard';
 import AddProduct from './admin/AddProduct';
 import Profile from './user/Profile';
 
+import App from './core/App';
+
 import Footer from './footer/Footer';
 
 const Routes = () => {
@@ -72,6 +74,7 @@ const Routes = () => {
                 <AdminRoute path="/create/product" exact component={AddProduct}/>
                 {/* <Route path="/product/:productId" exact component={Product}/> */}
                 <PrivateRoute path="/profile/:userId" exact component={Profile}/>
+                <Route path="/app" exact component={App}/>
             </Switch>
             <Footer/>
         </BrowserRouter>

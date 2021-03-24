@@ -6,6 +6,13 @@ import Card from './Card';
 import Checkout from './Checkout';
 
 const Cart = () => {
+
+    const connected = () => (
+        <div className="container-fluid">
+            
+        </div>
+    )
+
     const [items, setItems] = useState([]);
 
     useEffect(() => {
