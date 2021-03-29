@@ -1,6 +1,8 @@
 import React from 'react';
 import './MainComponents.css';
 
+import Footer from '../../../footer/Footer';
+
 function MainComponents() {
     return (
         <div className='servicesMainComponent' id="mainComponents">
@@ -89,7 +91,8 @@ function MainComponents() {
                 <p>pipes: pipes (usually pvc) are what transport the water in between the various stages of the cycle.</p>
                 <p>lights: the lights provide the radiant energy needed for plants to photosynthesize</p>
                 <p>pump: the pump is the main electrical source that pushes the water.</p>
-            </div>        
+            </div>       
+            <Footer/> 
         </div>
     );
 }

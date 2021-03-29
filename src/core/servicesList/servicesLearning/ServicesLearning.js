@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../Cards.css';
 import CardItem from '../../CardItem';
+import Footer from '../../../footer/Footer';
 
 function ServicesLearning() {
     return (
@@ -47,6 +48,7 @@ function ServicesLearning() {
                     </div>
                 </div>
                 </div>
+                <Footer/>
             </div>
         </>
     );

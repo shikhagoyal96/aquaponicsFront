@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../../footer/Footer';
 
 function AquaponicsDrawbacks() {
     return (
@@ -23,6 +24,7 @@ function AquaponicsDrawbacks() {
 
 
             </div>
+            <Footer/>
         </div>
     );
 }

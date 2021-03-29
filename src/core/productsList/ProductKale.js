@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductHerbs.css';
+import Footer from '../../footer/Footer';
 
 function ProductKale() {
     return (
@@ -75,6 +76,7 @@ function ProductKale() {
                 </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

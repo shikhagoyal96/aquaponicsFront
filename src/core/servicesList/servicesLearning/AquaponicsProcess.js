@@ -1,5 +1,6 @@
 import React from 'react';
 import './AquaponicsProcess.css';
+import Footer from '../../../footer/Footer';
 
 function AquaponicsProcess() {
     return (
@@ -30,7 +31,7 @@ function AquaponicsProcess() {
 
 
 
-
+<Footer/>
         </div>
     );
 }

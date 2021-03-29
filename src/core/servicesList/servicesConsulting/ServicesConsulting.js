@@ -1,6 +1,8 @@
 import React from 'react'
 import ServicesConsultingCards from './ServicesConsultingCards';
 
+import Footer from '../../../footer/Footer';
+
 function Services1() {
     return (
         <>
@@ -12,6 +14,7 @@ function Services1() {
                     <h1>AQUAPONICS CONSULTING</h1>
                 </div>
             <ServicesConsultingCards />
+            <Footer/>
             </div>
         </>
     )

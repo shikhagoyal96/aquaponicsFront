@@ -19,15 +19,7 @@ const Card = ({
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
 
-//   const showViewButton = showViewProductButton => {
-//     return (
-//       showViewProductButton && (
-//         <Link to={`/product/${product._id}`} className="mr-2">
-//           <button className="btn btn-outline-primary mt-2 mb-2 card-btn-1">View Product</button>
-//         </Link>
-//       )
-//     );
-//   };
+
   const addToCart = () => {
     // console.log('added');
     addItem(product, 
@@ -45,8 +37,9 @@ const Card = ({
   const showAddToCart = (showAddToCartButton) => {
     return (
        showAddToCartButton && (
-        <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2 card-btn-1  ">
-          Add to cart
+        <button onClick={addToCart} 
+          className="btn btn-warning btn-block">
+          Add toCart
         </button>
       )
     );
@@ -63,7 +56,7 @@ const Card = ({
       return cartUpdate && <div>
           <div className="input-group mb-3">
             <div className="input-group prepend">
-                <span className="input-group-text">AdjustQuantity</span>
+              <p style={{fontWeight: 'bold'}}>Adjust Quantity -</p>
             </div>
             <input type="number" className="form-control" value={count}
                 onChange={handleChange(product._id)}/>
@@ -79,9 +72,9 @@ const Card = ({
             removeItem(product._id)
             //setRun(!run); // run useEffect in parent Cart
           }
-          className="btn btn-outline-danger mt-2 mb-2"
+          className="btn btn-danger btn-block"
         >
-          Remove Product
+          Remove
         </button>
       )
     );
@@ -94,7 +87,7 @@ const Card = ({
         {shouldRedirect(redirect)}
         <ShowImage item={product} url="product" />
         <p className="card-p black-10">Price: $ {product.price}</p>
-        <p className="card-p black-10">Weight: {product.weight} lb</p>
+        <p className="card-p black-10">Weight: {product.weight}</p>
         {/* <p className="black-8">Added on {moment(product.createdAt).fromNow()}</p> */}
 
   <br />

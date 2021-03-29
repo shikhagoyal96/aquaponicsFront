@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 //import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
-import { Link } from 'react-router-dom';
-import { createProduct } from './apiAdmin';
+import { Link, Redirect } from 'react-router-dom';
+import { getProduct, updateProduct } from './apiAdmin';
 
-const AddProduct = () => {
+const UpdateProduct = ({ match }) => {
 
         const [values, setValues] = useState({
         //Properties to create new product
@@ -13,8 +13,8 @@ const AddProduct = () => {
         weight: '',
         photo: '',
         loading: false,
-        error: '',
-        createdProduct: '', //initially it will be empty, but after creating product it will tell the user that prodcut has been crated
+        error: false,
+        //createdProduct: '', //initially it will be empty, but after creating product it will tell the user that prodcut has been crated
         redirectToProfile: false,
         formData: ''
     });
@@ -32,8 +32,31 @@ const AddProduct = () => {
         formData
     } = values;
 
+    const init = productId => {
+        getProduct(productId).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                // populate the state
+                setValues({
+                    ...values,
+                    name: data.name,
+                   // description: data.description,
+                    price: data.price,
+                    weight: data.weight,
+                    //category: data.category._id,
+                    //shipping: data.shipping,
+                    //quantity: data.quantity,
+                    formData: new FormData()
+                });
+                // load categories
+                //initCategories();
+            }
+        });
+    };
+
         useEffect(() => {
-        setValues({...values, formData: new FormData()})
+            init(match.params.productId);
     }, []);
 
 
@@ -47,7 +70,7 @@ const AddProduct = () => {
         event.preventDefault();
         setValues({ ...values, error: '', loading: true });
 
-                createProduct(user._id, token, formData).then(data => {
+                updateProduct(match.params.productId, user._id, token, formData).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
@@ -58,11 +81,14 @@ const AddProduct = () => {
                     price: '',
                     weight: '',
                     loading: false,
+                    error: false,
+                    redirectToProfile: true,
                     createdProduct: data.name
                 });
             }
         });
     };
+
 
         const newPostForm = () => (
         <form className="mb-3" onSubmit={clickSubmit} >
@@ -86,26 +112,54 @@ const AddProduct = () => {
 
             <div className="form-group">
                 <label className="text-muted">Weight</label>
-                <input onChange={handleChange('weight')} type="string" className="form-control" value={weight} />
+                <input onChange={handleChange('weight')} type="text" className="form-control" value={weight} />
             </div>
 
-            <button className="btn btn-outline-primary">Create Product</button>
+            <button className="btn btn-outline-primary">Update Product</button>
         </form>
     );
+
+    const showError = () => (
+        <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+            {error}
+        </div>
+    );
+
+    const showSuccess = () => (
+        <div className="alert alert-info" style={{ display: createdProduct ? '' : 'none' }}>
+            <h2>{`${createdProduct}`} is updated!</h2>
+        </div>
+    );
+
+    const showLoading = () =>
+        loading && (
+            <div className="alert alert-success">
+                <h2>Loading...</h2>
+            </div>
+        );
+
+    const redirectUser = () => {
+        if (redirectToProfile) {
+            if (!error) {
+                return <Redirect to="/" />;
+            }
+        }
+    };
         
     return (
         <div> 
             <h1>{user.name}, ready to add a new product?</h1>
             <div className="row">
                 <div className="col-md-8 offset-md-2">
-                    {/* {showLoading()}
+                    {showLoading()}
                     {showSuccess()}
-                    {showError()} */}
+                    {showError()}
                     {newPostForm()}
+                    {redirectUser()}
                 </div>
             </div>
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;

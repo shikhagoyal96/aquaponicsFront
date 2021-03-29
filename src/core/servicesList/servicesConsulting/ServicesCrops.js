@@ -1,6 +1,8 @@
 import React from 'react';
 import './ServicesCrops.css';
 
+import Footer from '../../../footer/Footer';
+
 function ServiceCrops() {
     return (
         <div className='main-page' id="servicesCrops" >
@@ -206,7 +208,7 @@ Here are some crops that grow in a warm or colder climate. You can either follow
 
 
             </div>
-
+<Footer/>
         </div>
     );
 }

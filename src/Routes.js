@@ -34,11 +34,13 @@ import Dashboard from './user/UserDashboard';
 import AdminRoute from './auth/AdminRoute';
 import AdminDashboard from './user/AdminDashboard';
 import AddProduct from './admin/AddProduct';
+import UpdateProduct from './admin/UpdateProduct';
 import Profile from './user/Profile';
 
-import App from './core/App';
+import ManageProducts from './admin/ManageProducts';
+import Orders from "./admin/Orders";
 
-import Footer from './footer/Footer';
+//import Footer from './footer/Footer';
 
 const Routes = () => {
     return (
@@ -72,11 +74,14 @@ const Routes = () => {
                 <PrivateRoute path="/user/dashboard" exact component={Dashboard}/>
                 <AdminRoute path="/user/admindashboard" exact component={AdminDashboard}/>
                 <AdminRoute path="/create/product" exact component={AddProduct}/>
+                <AdminRoute path="/admin/product/update/:productId" exact component={UpdateProduct}/>
+                <AdminRoute path="/admin/products" exact component={ManageProducts}/>
                 {/* <Route path="/product/:productId" exact component={Product}/> */}
                 <PrivateRoute path="/profile/:userId" exact component={Profile}/>
-                <Route path="/app" exact component={App}/>
+                {/* <Route path="/app" exact component={App}/> */}
+                <AdminRoute path="/admin/orders" exact component={Orders}/>
             </Switch>
-            <Footer/>
+            {/* <Footer/> */}
         </BrowserRouter>
     );
 };

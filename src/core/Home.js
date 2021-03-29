@@ -3,6 +3,7 @@ import React from 'react';
 import HeroSection from './herosection/HeroSection';
 import ProductCards from './productsList/ProductCards';
 import ServicesCards from './servicesList/ServicesCards';
+import Footer from '../footer/Footer';
 
 function Home() {
     return (
@@ -14,6 +15,7 @@ function Home() {
                 <HeroSection />
                 <ProductCards />
                 <ServicesCards />
+                <Footer/>
             {/* </Layout> */}
         </>
     );

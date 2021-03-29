@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductHerbs.css';
+import Footer from '../../footer/Footer';
 
 function ProductBasil() {
     return (
@@ -69,6 +70,7 @@ function ProductBasil() {
                 </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

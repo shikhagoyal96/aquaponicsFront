@@ -1,6 +1,8 @@
 import React from 'react';
 import './SeedlingOverview.css';
 
+import Footer from '../../../footer/Footer';
+
 function SeedlingOverview() {
     return (
         <div className='main-page' id="seedlingOverview">
@@ -268,6 +270,7 @@ Below are some other considerations for starting tomatoes successfully:   </p>
 
 
             </div>
+            <Footer/>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../../footer/Footer';
 
 function AquaponicsBenefits() {
     return (
@@ -44,6 +45,7 @@ function AquaponicsBenefits() {
 
                
             </div>
+            <Footer/>
         </div>
     );
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import './BestCrops.css';
 
+import Footer from '../../../footer/Footer';
+
 function BestSuitableCrops() {
     return (
         <div className='main-page' id="bestSuitableCrops">
@@ -53,6 +55,7 @@ function BestSuitableCrops() {
                     <li> Microgreens</li>
                     </ul>
             </div>
+            <Footer/>
       </div>
     );
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import './PreRequisite.css';
 
+import Footer from '../../../footer/Footer';
+
 function PreRequisite() {
     return (
         <div className='main-page' id="preRequisite">
@@ -93,6 +95,7 @@ function PreRequisite() {
                     </ul>
                     </div>
                     </div>
+                    <Footer/>
         </div>
     );
 }
