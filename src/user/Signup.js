@@ -75,8 +75,8 @@ const Signup = () => {
 
     return (
         <Layout
-            title="Signup"
-            description="Fill all the input fields to create your account...."
+            title="SIGNUP - Fill all the input fields to create your account...."
+            description=""
             className="container col-md-8 offset-md-2"
         >
             {showSuccess()}

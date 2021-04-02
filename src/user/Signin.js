@@ -86,8 +86,8 @@ const Signin = () => {
 
     return (
         <Layout
-            title="Signin"
-            description="Please enter your correct cerentials to sign-in.."
+            title="SIGNIN - Please enter your correct cerentials to sign-in.."
+            description=""
             className="container col-md-8 offset-md-2"
         >
             {showLoading()}

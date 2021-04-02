@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {getProducts} from "./apiCore";
 import Card from "./Card";
+import Layout from '../core/Layout';
 
 const Shop = () => {
 
@@ -24,8 +25,13 @@ const Shop = () => {
 
     return(
         <>
-            <div className="container-fluid"> 
-            <h2 className="mb-4">Products Available at Aquaponics Store.....</h2>
+            {/* <div className="container-fluid">  */}
+            {/* <h2 className="mb-4">Products Available at Aquaponics Store.....</h2> */}
+            <Layout
+                title="SHOP - Products Available at Aquaponics Store....."
+                description=""
+                className="container col-md-8 offset-md-2"
+            >
                 <div className="row">
                         {/* {JSON.stringify(productsList)} */}
                         
@@ -37,7 +43,8 @@ const Shop = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+                </Layout>
+            {/* </div> */}
         </>
     );
 };

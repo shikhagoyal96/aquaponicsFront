@@ -45,7 +45,7 @@ import Orders from "./admin/Orders";
 const Routes = () => {
     return (
         <BrowserRouter>
-        <Menu/>
+        {/* <Menu/> */}
             <Switch>
                 <Route path="/" exact component={Home}/>
 

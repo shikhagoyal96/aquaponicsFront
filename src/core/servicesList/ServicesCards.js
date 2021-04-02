@@ -48,7 +48,7 @@ function ServicesCards() {
                   </div>
                 </Link>
 
-                <Link to='/servicesCards' className='pricing__container-card'>
+                <Link to='/cart' className='pricing__container-card'>
                   <div className='pricing__container-cardInfo'>
                     <div className='icon'>
                       <GiCrystalize />

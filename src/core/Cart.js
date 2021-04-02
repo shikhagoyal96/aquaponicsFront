@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-//import Layout from './Layout';
+import Layout from './Layout';
 import { getCart, removeItem } from './cartHelpers';
 import Card from './Card';
 import Checkout from './Checkout';
@@ -42,7 +42,11 @@ const Cart = () => {
         );
 
     return(
-        <div className="container-fluid">
+        // <div className="container-fluid">
+        <Layout
+        title="CART - Products Available at Aquaponics Store....."
+        description=""
+        >
             <div className="row" style={{margin: "auto", width: "60%"}}>
                 <div className="col-6 mb-3">
                     {items.length > 0 ? showItems(items) : noItemsMessage()}
@@ -53,7 +57,8 @@ const Cart = () => {
                     <Checkout products={items} setRun={setRun} run={run} />
                 </div>
             </div>
-        </div>
+            </Layout>
+        // </div>
     );
 };
 
